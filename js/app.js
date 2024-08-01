@@ -13,7 +13,7 @@ const gameBoardEl = document.querySelector('.board')
 
 const init = () => {
     console.log('Init function called')
-    board = ['','','','','','','','','']
+    board = ['','X','','','','','O','','']
     turn = 'X';
     winner = false;
     tie = false;
@@ -56,3 +56,13 @@ function updateMessage () {
     }
 }
 }
+const winningCombos = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [6,4,2],
+]
