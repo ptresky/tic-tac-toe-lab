@@ -92,27 +92,33 @@ squareEls.forEach(square => {
 //this event listener should call the handleClick from above.
 
 function placePiece(currentSquareIndex) {
-    init.board[currentSquareIndex] = turn.value
-    console.dir(board)
+    // init.board[currentSquareIndex] = init.turn
+    console.log({
+        currBoard: board[currentSquareIndex],
+        currTurn: turn.value,
+        newBoard: board[currentSquareIndex],
+        newTurn: turn
+    }) 
 }
 
 function checkForWinner() {
-   if (currentSquareIndex = ''){
-    return winner === false
-   } else
+    console.log(currentSquareIndex)
+   if (currentSquareIndex === ''){
+    return winner = false
+} else
     if (currentSquareIndex === winningCombos[[0]])
     (currentSquareIndex === winningCombos[[1]])
     (currentSquareIndex === winningCombos[[2]])
-    return winner === true
+    return winner = true
 }
 
 function checkForTie() {
     if (winner === true)
         return
-    if (init.board.value === ''){
-        tie === false
-    } else if (init.board.value != '')
-        tie === true       
+    if (board.contains('') = true){
+        tie = false
+    } else if (board.contains('') = false) {
+        tie = true}       
     console.log(tie)
 } 
 
@@ -120,9 +126,9 @@ function switchPlayerTurn() {
     if (winner === true)
         return
     if (winner === false && turn === 'X')
-        return turn === 'O'
+        return turn = 'O'
     if (winner === false && turn === 'O')
-        return turn === 'X' 
+        return turn = 'X' 
     console.log(turn)
     render()
 }
