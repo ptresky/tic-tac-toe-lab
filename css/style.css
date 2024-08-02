@@ -18,4 +18,13 @@ body {
     font-size: 64px;
     text-align: center;
   }
-  
+  #reset {
+    display: flex; 
+    padding: 0;
+    width: 60px;
+    height: 20px;
+    font-size: large;
+    cursor: pointer;
+    background-color:black;
+    color: white
+  }
