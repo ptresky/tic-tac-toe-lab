@@ -5,7 +5,7 @@ let winner
 let tie
 
 const squareEls = document.querySelectorAll('.sqr')
-const messageEl = document.querySelector('message')
+const messageEl = document.querySelector('#message')
 const gameBoardEl = document.querySelector('.board')
 
 // console.log(squareEls)
@@ -66,3 +66,59 @@ const winningCombos = [
     [0,4,8],
     [6,4,2],
 ]
+function handleClick(event) {
+    const currentSquareIndex = event.target.id;
+    if (board[currentSquareIndex] === '' && !winner && !tie) {
+        placePiece(currentSquareIndex);
+        checkForWinner();
+        checkForTie();
+        switchPlayerTurn();
+        render();
+    }
+}
+
+
+squareEls.forEach(square => {
+    square.addEventListener('click', handleClick);
+});
+
+//create handleClick function
+//add an event param
+//attach event listener to the gameBoardEl
+//add an event listener to each square element using a loop. this should respond to a click
+//this event listener should call the handleClick from above.
+
+function placePiece(currentSquareIndex) {
+    init.board[currentSquareIndex] = turn.value
+    console.dir(board)
+}
+
+function checkForWinner() {
+   if (currentSquareIndex = ''){
+    return winner === false
+   } else
+    if (currentSquareIndex === winningCombos[[0]])
+    (currentSquareIndex === winningCombos[[1]])
+    (currentSquareIndex === winningCombos[[2]])
+    return winner === true
+}
+
+function checkForTie() {
+    if (winner === true)
+        return
+    if (init.board.value === ''){
+        tie === false
+    } else if (init.board.value != '')
+        tie === true       
+    console.log(tie)
+} 
+
+function switchPlayerTurn() {
+    if (winner === true)
+        return
+    if (winner === false && turn === 'X')
+        return turn === 'O'
+    if (winner === false && turn === 'O')
+        return turn === 'X' 
+    console.log(turn)
+}
