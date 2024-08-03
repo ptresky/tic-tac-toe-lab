@@ -1,8 +1,8 @@
 //Variables:
-let board;
-let turn
-let winner
-let tie
+let board[];
+let turn = '';
+let winner = false;
+let tie = false;
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
@@ -102,8 +102,8 @@ function placePiece(currentSquareIndex) {
 }
 
 function checkForWinner() {
-    console.log(currentSquareIndex)
-   if (currentSquareIndex === ''){
+    console.log(board[currentSquareIndex])
+   if (board.currentSquareIndex === ''){
     return winner = false
 } else
     if (currentSquareIndex === winningCombos[[0]])
