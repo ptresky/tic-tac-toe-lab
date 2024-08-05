@@ -1,16 +1,24 @@
 //Variables:
-let board[];
+let board;
 let turn = '';
 let winner = false;
 let tie = false;
+
+const winningCombos = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [6,4,2],
+]
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
 const gameBoardEl = document.querySelector('.board')
 
-
-// console.log(squareEls)
-// console.log(messageEl)
 
 const init = () => {
     console.log('Init function called')
@@ -20,6 +28,7 @@ const init = () => {
     tie = false;
     render()
 }
+const currentSquareIndex = squareEls
 
 init()
 
@@ -59,24 +68,13 @@ function updateMessage () {
     }
 }
 }
-const winningCombos = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [6,4,2],
-]
 function handleClick(event) {
     const currentSquareIndex = event.target.id;
-    if (board[currentSquareIndex] === '' && !winner && !tie) {
-        placePiece(currentSquareIndex);
-        checkForWinner();
-        checkForTie();
-        switchPlayerTurn();
-        render();
+    if ((squareEls[currentSquareIndex].textContent === 'X' || squareEls[currentSquareIndex].textContent === 'O') || winner) {
+        return "working"
+    } 
+    if (board[currentSquareIndex].textContent === '') {
+        placePiece() 
     }
 }
 
@@ -93,17 +91,25 @@ squareEls.forEach(square => {
 
 function placePiece(currentSquareIndex) {
     // init.board[currentSquareIndex] = init.turn
-    console.log({
-        currBoard: board[currentSquareIndex],
-        currTurn: turn.value,
-        newBoard: board[currentSquareIndex],
-        newTurn: turn
-    }) 
+    // console.log({
+    //     currBoard: board[currentSquareIndex],
+    //     currTurn: turn.value,
+    //     newBoard: board[currentSquareIndex],
+    //     newTurn: turn
+    // }) 
+    //when turn === 'X', place 'X' in squareEl
+    // else if turn !== 'X', place 'O' in sqareEl
+    if (turn === 'X') {
+        currentSquareIndex = 'X' && square.removeEventListener('click')
+    } else if (turn === 'O') {
+        currentSquareIndex = 'O' && square.removeEventListener('click')
+    }
+
 }
 
-function checkForWinner() {
-    console.log(board[currentSquareIndex])
-   if (board.currentSquareIndex === ''){
+function checkForWinner(currentSquareIndex) {
+    // console.log(board)
+   if (board === ''){
     return winner = false
 } else
     if (currentSquareIndex === winningCombos[[0]])
