@@ -28,7 +28,7 @@ const init = () => {
     tie = false;
     render()
 }
-const currentSquareIndex = squareEls
+// const currentSquareIndex = squareEls
 
 init()
 
@@ -38,6 +38,7 @@ function render() {
 }
 
 function updateBoard() {
+    console.log(board)
     board.forEach((square, index) => {
       if (square === 'X') {
         squareEls[index].textContent = 'X'
@@ -69,13 +70,23 @@ function updateMessage () {
 }
 }
 function handleClick(event) {
+    // the current indx of the target from our click event 
     const currentSquareIndex = event.target.id;
+    // 
+    
+    // if the square target contains x or o or the winner is true, terminate the function by returning
+
     if ((squareEls[currentSquareIndex].textContent === 'X' || squareEls[currentSquareIndex].textContent === 'O') || winner) {
-        return "working"
+        console.log(board[currentSquareIndex])
+        return 
     } 
-    if (board[currentSquareIndex].textContent === '') {
-        placePiece() 
-    }
+
+    // this is the code to run if the square is empty string
+    placePiece(currentSquareIndex)
+    checkForWinner()
+    checkForTie()
+    switchPlayerTurn()
+    render()
 }
 
 
@@ -90,42 +101,39 @@ squareEls.forEach(square => {
 //this event listener should call the handleClick from above.
 
 function placePiece(currentSquareIndex) {
-    // init.board[currentSquareIndex] = init.turn
-    // console.log({
-    //     currBoard: board[currentSquareIndex],
-    //     currTurn: turn.value,
-    //     newBoard: board[currentSquareIndex],
-    //     newTurn: turn
-    // }) 
-    //when turn === 'X', place 'X' in squareEl
-    // else if turn !== 'X', place 'O' in sqareEl
-    if (turn === 'X') {
-        currentSquareIndex = 'X' && square.removeEventListener('click')
-    } else if (turn === 'O') {
-        currentSquareIndex = 'O' && square.removeEventListener('click')
-    }
-
+   board[currentSquareIndex] = turn
 }
 
 function checkForWinner(currentSquareIndex) {
     // console.log(board)
    if (board === ''){
     return winner = false
-} else
-    if (currentSquareIndex === winningCombos[[0]])
-    (currentSquareIndex === winningCombos[[1]])
-    (currentSquareIndex === winningCombos[[2]])
-    return winner = true
+    } else {
+        // check winningCombos that match what is on the board via the indexes of the board.
+        if (
+            (currentSquareIndex === winningCombos[[0]]) ||
+            (currentSquareIndex === winningCombos[[1]]) ||
+            (currentSquareIndex === winningCombos[[2]]) ||
+            (currentSquareIndex === winningCombos[[3]]) ||
+            (currentSquareIndex === winningCombos[[4]]) ||
+            (currentSquareIndex === winningCombos[[5]]) ||
+            (currentSquareIndex === winningCombos[[6]]) ||
+            (currentSquareIndex === winningCombos[[7]])
+        ) {
+            
+            return winner = true
+        }
+    }
 }
 
 function checkForTie() {
-    if (winner === true)
-        return
-    if (board.contains('') = true){
-        tie = false
-    } else if (board.contains('') = false) {
-        tie = true}       
-    console.log(tie)
+    // if (winner === true)
+    //     return
+    // if (board.contains('') = true){
+    //     tie = false
+    // } else if (board.contains('') = false) {
+    //     tie = true}       
+    // console.log(tie)
 } 
 
 function switchPlayerTurn() {
@@ -138,4 +146,4 @@ function switchPlayerTurn() {
     console.log(turn)
     render()
 }
-const resetBtnEl = document.addEventListener('click', init)
+// const resetBtnEl = document.addEventListener('click', init)
