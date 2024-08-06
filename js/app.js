@@ -18,6 +18,7 @@ const winningCombos = [
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
 const gameBoardEl = document.querySelector('.board')
+const resetBtnEl = document.querySelector('#reset')
 
 
 const init = () => {
@@ -109,7 +110,9 @@ function checkForWinner(currentSquareIndex) {
    if (board === ''){
     return winner = false
     } else {
-        // check winningCombos that match what is on the board via the indexes of the board.
+        // check winningCombos that match what is on the board via the 
+        // indexes of the board.
+        // const [a, b, c] = winningCombos[]
         if (
             (currentSquareIndex === winningCombos[[0]]) ||
             (currentSquareIndex === winningCombos[[1]]) ||
@@ -118,7 +121,7 @@ function checkForWinner(currentSquareIndex) {
             (currentSquareIndex === winningCombos[[4]]) ||
             (currentSquareIndex === winningCombos[[5]]) ||
             (currentSquareIndex === winningCombos[[6]]) ||
-            (currentSquareIndex === winningCombos[[7]])
+            (currentSquareIndex === winningCombos[[7]]) 
         ) {
             
             return winner = true
@@ -134,7 +137,8 @@ function checkForTie() {
     // } else if (board.contains('') = false) {
     //     tie = true}       
     // console.log(tie)
-} 
+    } 
+// }
 
 function switchPlayerTurn() {
     if (winner === true)
@@ -146,4 +150,4 @@ function switchPlayerTurn() {
     console.log(turn)
     render()
 }
-// const resetBtnEl = document.addEventListener('click', init)
+resetBtnEl.addEventListener('click', init)
