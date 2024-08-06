@@ -93,7 +93,8 @@ function handleClick(event) {
 
 squareEls.forEach(square => {
     square.addEventListener('click', handleClick);
-});
+    }
+)
 
 //create handleClick function
 //add an event param
@@ -119,34 +120,20 @@ function checkForWinner(currentSquareIndex) {
                 return winner = true
             }
         }
-        // if (
-        //     (currentSquareIndex === winningCombos[[0]]) ||
-        //     (currentSquareIndex === winningCombos[[1]]) ||
-        //     (currentSquareIndex === winningCombos[[2]]) ||
-        //     (currentSquareIndex === winningCombos[[3]]) ||
-        //     (currentSquareIndex === winningCombos[[4]]) ||
-        //     (currentSquareIndex === winningCombos[[5]]) ||
-        //     (currentSquareIndex === winningCombos[[6]]) ||
-        //     (currentSquareIndex === winningCombos[[7]]) 
-        // ) {
-            
-        //     return winner = true
-        // }
     }
 }
-
-
-
-
-
 
 function checkForTie() {
     if (checkForWinner()){
         return
     }
-    if (board.includes('')){
-        tie = true
-    }
+    let fullboard = board.includes('');
+    tie = !fullboard
+    
+    
+    // if (board.includes('') = true){
+    //     tie !== true
+    // }
 }
 
 function switchPlayerTurn() {
