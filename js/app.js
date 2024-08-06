@@ -113,32 +113,41 @@ function checkForWinner(currentSquareIndex) {
         // check winningCombos that match what is on the board via the 
         // indexes of the board.
         // const [a, b, c] = winningCombos[]
-        if (
-            (currentSquareIndex === winningCombos[[0]]) ||
-            (currentSquareIndex === winningCombos[[1]]) ||
-            (currentSquareIndex === winningCombos[[2]]) ||
-            (currentSquareIndex === winningCombos[[3]]) ||
-            (currentSquareIndex === winningCombos[[4]]) ||
-            (currentSquareIndex === winningCombos[[5]]) ||
-            (currentSquareIndex === winningCombos[[6]]) ||
-            (currentSquareIndex === winningCombos[[7]]) 
-        ) {
-            
-            return winner = true
+        for (const combo of winningCombos) {
+            const [a, b, c] = combo;
+            if (board[a] !== "" && board[a] === board[b] && board[a] === board[c]) {
+                return winner = true
+            }
         }
+        // if (
+        //     (currentSquareIndex === winningCombos[[0]]) ||
+        //     (currentSquareIndex === winningCombos[[1]]) ||
+        //     (currentSquareIndex === winningCombos[[2]]) ||
+        //     (currentSquareIndex === winningCombos[[3]]) ||
+        //     (currentSquareIndex === winningCombos[[4]]) ||
+        //     (currentSquareIndex === winningCombos[[5]]) ||
+        //     (currentSquareIndex === winningCombos[[6]]) ||
+        //     (currentSquareIndex === winningCombos[[7]]) 
+        // ) {
+            
+        //     return winner = true
+        // }
     }
 }
 
+
+
+
+
+
 function checkForTie() {
-    // if (winner === true)
-    //     return
-    // if (board.contains('') = true){
-    //     tie = false
-    // } else if (board.contains('') = false) {
-    //     tie = true}       
-    // console.log(tie)
-    } 
-// }
+    if (checkForWinner()){
+        return
+    }
+    if (board.includes('')){
+        tie = true
+    }
+}
 
 function switchPlayerTurn() {
     if (winner === true)
